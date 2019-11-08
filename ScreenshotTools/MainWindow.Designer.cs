@@ -28,14 +28,19 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+         this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
          this.CaptureArea = new System.Windows.Forms.Panel();
          this.ToolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
          this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
          this.TakeScreenshot = new System.Windows.Forms.ToolStripSplitButton();
-         this.NewScreenshotSeriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.NewScreenshotSeries = new System.Windows.Forms.ToolStripMenuItem();
          this.CaptureCursor = new System.Windows.Forms.ToolStripMenuItem();
          this.HighlightCursor = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+         this.delay1Second = new System.Windows.Forms.ToolStripMenuItem();
+         this.delay3Seconds = new System.Windows.Forms.ToolStripMenuItem();
+         this.delay5Seconds = new System.Windows.Forms.ToolStripMenuItem();
          this.Edit = new System.Windows.Forms.ToolStripButton();
          this.Save = new System.Windows.Forms.ToolStripSplitButton();
          this.StoreHorizontalStitchedImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +48,7 @@
          this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
          this.ImagesText = new System.Windows.Forms.ToolStripLabel();
          this.ImagesCount = new System.Windows.Forms.ToolStripLabel();
+         this.timer1 = new System.Windows.Forms.Timer(this.components);
          this.ToolStripContainer1.ContentPanel.SuspendLayout();
          this.ToolStripContainer1.RightToolStripPanel.SuspendLayout();
          this.ToolStripContainer1.SuspendLayout();
@@ -105,7 +111,7 @@
          this.ToolStrip1.Location = new System.Drawing.Point(0, 3);
          this.ToolStrip1.Name = "ToolStrip1";
          this.ToolStrip1.Padding = new System.Windows.Forms.Padding(0);
-         this.ToolStrip1.Size = new System.Drawing.Size(48, 189);
+         this.ToolStrip1.Size = new System.Drawing.Size(48, 170);
          this.ToolStrip1.TabIndex = 0;
          this.ToolStrip1.TabStop = true;
          // 
@@ -113,9 +119,13 @@
          // 
          this.TakeScreenshot.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.TakeScreenshot.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NewScreenshotSeriesToolStripMenuItem,
+            this.NewScreenshotSeries,
             this.CaptureCursor,
-            this.HighlightCursor});
+            this.HighlightCursor,
+            this.toolStripSeparator2,
+            this.delay1Second,
+            this.delay3Seconds,
+            this.delay5Seconds});
          this.TakeScreenshot.Image = global::ScreenshotTools.Properties.Resources.AddScreenshot;
          this.TakeScreenshot.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.TakeScreenshot.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -123,12 +133,12 @@
          this.TakeScreenshot.Size = new System.Drawing.Size(47, 36);
          this.TakeScreenshot.ButtonClick += new System.EventHandler(this.TakeScreenshot_Click);
          // 
-         // NewScreenshotSeriesToolStripMenuItem
+         // NewScreenshotSeries
          // 
-         this.NewScreenshotSeriesToolStripMenuItem.Name = "NewScreenshotSeriesToolStripMenuItem";
-         this.NewScreenshotSeriesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-         this.NewScreenshotSeriesToolStripMenuItem.Text = "New screenshot series";
-         this.NewScreenshotSeriesToolStripMenuItem.Click += new System.EventHandler(this.NewScreenshotSeriesToolStripMenuItem_Click);
+         this.NewScreenshotSeries.Name = "NewScreenshotSeries";
+         this.NewScreenshotSeries.Size = new System.Drawing.Size(190, 22);
+         this.NewScreenshotSeries.Text = "New screenshot series";
+         this.NewScreenshotSeries.Click += new System.EventHandler(this.NewScreenshotSeries_Click);
          // 
          // CaptureCursor
          // 
@@ -145,6 +155,35 @@
          this.HighlightCursor.Name = "HighlightCursor";
          this.HighlightCursor.Size = new System.Drawing.Size(190, 22);
          this.HighlightCursor.Text = "Highlight cursor";
+         // 
+         // toolStripSeparator2
+         // 
+         this.toolStripSeparator2.Name = "toolStripSeparator2";
+         this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+         // 
+         // delay1Second
+         // 
+         this.delay1Second.CheckOnClick = true;
+         this.delay1Second.Name = "delay1Second";
+         this.delay1Second.Size = new System.Drawing.Size(190, 22);
+         this.delay1Second.Text = "Delay 1 second";
+         this.delay1Second.CheckedChanged += new System.EventHandler(this.delay1Second_CheckedChanged);
+         // 
+         // delay3Seconds
+         // 
+         this.delay3Seconds.CheckOnClick = true;
+         this.delay3Seconds.Name = "delay3Seconds";
+         this.delay3Seconds.Size = new System.Drawing.Size(190, 22);
+         this.delay3Seconds.Text = "Delay 3 seconds";
+         this.delay3Seconds.CheckedChanged += new System.EventHandler(this.delay3Seconds_CheckedChanged);
+         // 
+         // delay5Seconds
+         // 
+         this.delay5Seconds.CheckOnClick = true;
+         this.delay5Seconds.Name = "delay5Seconds";
+         this.delay5Seconds.Size = new System.Drawing.Size(190, 22);
+         this.delay5Seconds.Text = "Delay 5 seconds";
+         this.delay5Seconds.CheckedChanged += new System.EventHandler(this.delay5Seconds_CheckedChanged);
          // 
          // Edit
          // 
@@ -203,6 +242,10 @@
          this.ImagesCount.Text = "0";
          this.ImagesCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
          // 
+         // timer1
+         // 
+         this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+         // 
          // MainWindow
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,11 +283,16 @@
 		private System.Windows.Forms.ToolStripSplitButton TakeScreenshot;
 		private System.Windows.Forms.ToolStripMenuItem CaptureCursor;
 		private System.Windows.Forms.ToolStripMenuItem HighlightCursor;
-      private System.Windows.Forms.ToolStripMenuItem NewScreenshotSeriesToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem NewScreenshotSeries;
       private System.Windows.Forms.ToolStripSplitButton Save;
       private System.Windows.Forms.ToolStripMenuItem StoreHorizontalStitchedImageToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem StoreVerticalStitchedImageToolStripMenuItem;
       private System.Windows.Forms.ToolStripButton Edit;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+      private System.Windows.Forms.ToolStripMenuItem delay1Second;
+      private System.Windows.Forms.ToolStripMenuItem delay3Seconds;
+      private System.Windows.Forms.ToolStripMenuItem delay5Seconds;
+      private System.Windows.Forms.Timer timer1;
    }
 }
 

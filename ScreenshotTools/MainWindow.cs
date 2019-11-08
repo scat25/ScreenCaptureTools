@@ -189,9 +189,15 @@ namespace ScreenshotTools
 
       private void TakeScreenshot_Click(object sender, EventArgs e)
       {
-         CaptureBitmap();
-         Edit.Enabled = true;
-         Save.Enabled = true;
+         int delay = 0;
+         if (delay1Second.Checked) delay = 1;
+         if (delay3Seconds.Checked) delay = 3;
+         if (delay5Seconds.Checked) delay = 5;
+         Edit.Enabled = false;
+         Save.Enabled = false;
+         TakeScreenshot.Enabled = false;
+         timer1.Interval = Math.Max(delay * 1000, 1);
+         timer1.Enabled = true;
       }
 
       private void Save_Click(object sender, EventArgs e)
@@ -254,7 +260,7 @@ namespace ScreenshotTools
          Properties.Settings.Default.Save();
       }
 
-      private void NewScreenshotSeriesToolStripMenuItem_Click(object sender, EventArgs e)
+      private void NewScreenshotSeries_Click(object sender, EventArgs e)
       {
          ResetImages();
       }
@@ -271,6 +277,42 @@ namespace ScreenshotTools
             Edit.Enabled = false;
             Save.Enabled = false;
          }
+      }
+
+      private void delay1Second_CheckedChanged(object sender, EventArgs e)
+      {
+         if (delay1Second.Checked)
+         {
+            delay3Seconds.Checked = false;
+            delay5Seconds.Checked = false;
+         }
+      }
+
+      private void delay3Seconds_CheckedChanged(object sender, EventArgs e)
+      {
+         if (delay3Seconds.Checked)
+         {
+            delay1Second.Checked = false;
+            delay5Seconds.Checked = false;
+         }
+      }
+
+      private void delay5Seconds_CheckedChanged(object sender, EventArgs e)
+      {
+         if (delay5Seconds.Checked)
+         {
+            delay1Second.Checked = false;
+            delay3Seconds.Checked = false;
+         }
+      }
+
+      private void timer1_Tick(object sender, EventArgs e)
+      {
+         timer1.Enabled = false;
+         CaptureBitmap();
+         Edit.Enabled = true;
+         Save.Enabled = true;
+         TakeScreenshot.Enabled = true;
       }
    }
 }
