@@ -16,7 +16,7 @@ namespace ScreenCam
       public MainWindow()
       {
          InitializeComponent();
-         recordingTimer.Interval = 1000.0 / 30.0;
+         recordingTimer.Interval = 1000.0 / 25.0;
          recordingTimer.Elapsed += RecordingTimer_Elapsed;
          recordingTimer.AutoReset = true;
          Edit.Enabled = false;
@@ -24,7 +24,7 @@ namespace ScreenCam
          ToolStrip1.BackColor = Control.DefaultBackColor;
       }
 
-      int fps = 30;
+      ushort fps = 25;
       List<Bitmap> frames = new List<Bitmap>();
       bool isRecording = false;
       Size captureSize;
@@ -34,24 +34,6 @@ namespace ScreenCam
          int width = CaptureArea.Size.Width - 2;
          int height = CaptureArea.Size.Height - 2;
          captureSize = new Size(width, height);
-      }
-
-      void UpdateFPS()
-      {
-         if (Fps30.Checked == true)
-         {
-            Fps30.Checked = true;
-            Fps60.Checked = false;
-            this.fps = 30;
-            recordingTimer.Interval = 1000.0 / 30.0;
-         }
-         else if (Fps60.Checked == true)
-         {
-            Fps30.Checked = false;
-            Fps60.Checked = true;
-            this.fps = 60;
-            recordingTimer.Interval = 1000.0 / 60.0;
-         }
       }
 
       delegate void UpdateFrameTextCallback(string text);
@@ -221,11 +203,9 @@ namespace ScreenCam
          }
          CaptureCursor.Checked = Properties.Settings.Default.CaptureCursor;
          HighlightCursor.Checked = Properties.Settings.Default.HighlightCursor;
-         byte fps = Properties.Settings.Default.FPS;
-         Fps30.Checked = fps != 60;
-         Fps60.Checked = fps == 60;
+         ushort fps = Properties.Settings.Default.FPS;
+         fpsComboBox.Text = fps.ToString();
          ToolStripManager.LoadSettings(this);
-         UpdateFPS();
       }
 
       private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -243,19 +223,15 @@ namespace ScreenCam
 
          Properties.Settings.Default.CaptureCursor = CaptureCursor.Checked;
          Properties.Settings.Default.HighlightCursor = HighlightCursor.Checked;
-         Properties.Settings.Default.FPS = Fps60.Checked ? (byte)60 : (byte)30;
+         Properties.Settings.Default.FPS = Convert.ToUInt16(fpsComboBox.Text);
          ToolStripManager.SaveSettings(this);
          Properties.Settings.Default.Save();
       }
 
-      private void Fps30_Click(object sender, EventArgs e)
+      private void fpsComboBox_SelectedIndexChanged(object sender, EventArgs e)
       {
-         UpdateFPS();
-      }
-
-      private void Fps60_Click(object sender, EventArgs e)
-      {
-         UpdateFPS();
+         fps = Convert.ToUInt16(fpsComboBox.Text);
+         recordingTimer.Interval = 1000.0 / Convert.ToDouble(fps);
       }
    }
 }

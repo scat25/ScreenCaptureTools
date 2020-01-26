@@ -36,8 +36,7 @@
          this.CaptureCursor = new System.Windows.Forms.ToolStripMenuItem();
          this.HighlightCursor = new System.Windows.Forms.ToolStripMenuItem();
          this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-         this.Fps30 = new System.Windows.Forms.ToolStripMenuItem();
-         this.Fps60 = new System.Windows.Forms.ToolStripMenuItem();
+         this.fpsComboBox = new System.Windows.Forms.ToolStripComboBox();
          this.Edit = new System.Windows.Forms.ToolStripButton();
          this.Save = new System.Windows.Forms.ToolStripButton();
          this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -116,8 +115,7 @@
             this.CaptureCursor,
             this.HighlightCursor,
             this.ToolStripSeparator2,
-            this.Fps30,
-            this.Fps60});
+            this.fpsComboBox});
          this.Record.Image = global::ScreenCam.Properties.Resources.StartRecording;
          this.Record.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.Record.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -131,38 +129,34 @@
          this.CaptureCursor.CheckOnClick = true;
          this.CaptureCursor.CheckState = System.Windows.Forms.CheckState.Checked;
          this.CaptureCursor.Name = "CaptureCursor";
-         this.CaptureCursor.Size = new System.Drawing.Size(160, 22);
+         this.CaptureCursor.Size = new System.Drawing.Size(181, 22);
          this.CaptureCursor.Text = "Capture cursor";
          // 
          // HighlightCursor
          // 
          this.HighlightCursor.CheckOnClick = true;
          this.HighlightCursor.Name = "HighlightCursor";
-         this.HighlightCursor.Size = new System.Drawing.Size(160, 22);
+         this.HighlightCursor.Size = new System.Drawing.Size(181, 22);
          this.HighlightCursor.Text = "Highlight cursor";
          // 
          // ToolStripSeparator2
          // 
          this.ToolStripSeparator2.Name = "ToolStripSeparator2";
-         this.ToolStripSeparator2.Size = new System.Drawing.Size(157, 6);
+         this.ToolStripSeparator2.Size = new System.Drawing.Size(178, 6);
          // 
-         // Fps30
+         // fpsComboBox
          // 
-         this.Fps30.Checked = true;
-         this.Fps30.CheckOnClick = true;
-         this.Fps30.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.Fps30.Name = "Fps30";
-         this.Fps30.Size = new System.Drawing.Size(160, 22);
-         this.Fps30.Text = "30 FPS";
-         this.Fps30.Click += new System.EventHandler(this.Fps30_Click);
-         // 
-         // Fps60
-         // 
-         this.Fps60.CheckOnClick = true;
-         this.Fps60.Name = "Fps60";
-         this.Fps60.Size = new System.Drawing.Size(160, 22);
-         this.Fps60.Text = "60 FPS";
-         this.Fps60.Click += new System.EventHandler(this.Fps60_Click);
+         this.fpsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.fpsComboBox.Items.AddRange(new object[] {
+            "25",
+            "30",
+            "50",
+            "60"});
+         this.fpsComboBox.MaxLength = 2;
+         this.fpsComboBox.Name = "fpsComboBox";
+         this.fpsComboBox.Size = new System.Drawing.Size(121, 23);
+         this.fpsComboBox.ToolTipText = "FPS";
+         this.fpsComboBox.SelectedIndexChanged += new System.EventHandler(this.fpsComboBox_SelectedIndexChanged);
          // 
          // Edit
          // 
@@ -244,8 +238,7 @@
 		private System.Windows.Forms.ToolStripMenuItem CaptureCursor;
 		private System.Windows.Forms.ToolStripMenuItem HighlightCursor;
 		private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
-		private System.Windows.Forms.ToolStripMenuItem Fps30;
-		private System.Windows.Forms.ToolStripMenuItem Fps60;
-	}
+      private System.Windows.Forms.ToolStripComboBox fpsComboBox;
+   }
 }
 
