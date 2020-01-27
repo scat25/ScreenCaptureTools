@@ -171,20 +171,6 @@ namespace ScreenCam
          CaptureBitmap();
       }
 
-      private void MainWindow_Resize(object sender, EventArgs e)
-      {
-         //ensure the capture size is a multiple of 2 in width and height
-         UpdateCaptureSizeFromControl();
-         if (captureSize.Width % 2 != 0)
-         {
-            Width += 1;
-         }
-         if (captureSize.Height % 2 != 0)
-         {
-            Height += 1;
-         }
-      }
-
       private void MainWindow_Load(object sender, EventArgs e)
       {
          if (Properties.Settings.Default.MainWindowLocation != null)
@@ -232,6 +218,20 @@ namespace ScreenCam
       {
          fps = Convert.ToUInt16(fpsComboBox.Text);
          recordingTimer.Interval = 1000.0 / Convert.ToDouble(fps);
+      }
+
+      private void MainWindow_ResizeEnd(object sender, EventArgs e)
+      {
+         //ensure the capture size is a multiple of 2 in width and height
+         UpdateCaptureSizeFromControl();
+         if (captureSize.Width % 2 != 0)
+         {
+            Width += 1;
+         }
+         if (captureSize.Height % 2 != 0)
+         {
+            Height += 1;
+         }
       }
    }
 }

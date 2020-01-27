@@ -55,7 +55,7 @@
          this.CaptureArea.Location = new System.Drawing.Point(0, 0);
          this.CaptureArea.Margin = new System.Windows.Forms.Padding(0);
          this.CaptureArea.Name = "CaptureArea";
-         this.CaptureArea.Size = new System.Drawing.Size(522, 237);
+         this.CaptureArea.Size = new System.Drawing.Size(1044, 456);
          this.CaptureArea.TabIndex = 1;
          // 
          // ToolStripContainer1
@@ -71,19 +71,21 @@
          // ToolStripContainer1.ContentPanel
          // 
          this.ToolStripContainer1.ContentPanel.Controls.Add(this.CaptureArea);
-         this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(522, 237);
+         this.ToolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1044, 456);
          // 
          // ToolStripContainer1.LeftToolStripPanel
          // 
          this.ToolStripContainer1.LeftToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
          this.ToolStripContainer1.Location = new System.Drawing.Point(0, 0);
+         this.ToolStripContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
          this.ToolStripContainer1.Name = "ToolStripContainer1";
          // 
          // ToolStripContainer1.RightToolStripPanel
          // 
          this.ToolStripContainer1.RightToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
          this.ToolStripContainer1.RightToolStripPanel.Controls.Add(this.ToolStrip1);
-         this.ToolStripContainer1.Size = new System.Drawing.Size(570, 262);
+         this.ToolStripContainer1.Size = new System.Drawing.Size(1140, 504);
          this.ToolStripContainer1.TabIndex = 0;
          this.ToolStripContainer1.Text = "toolStripContainer1";
          // 
@@ -94,6 +96,7 @@
          // ToolStrip1
          // 
          this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+         this.ToolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
          this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Record,
             this.Edit,
@@ -101,10 +104,10 @@
             this.ToolStripSeparator1,
             this.FramesText,
             this.FrameCount});
-         this.ToolStrip1.Location = new System.Drawing.Point(0, 3);
+         this.ToolStrip1.Location = new System.Drawing.Point(0, 6);
          this.ToolStrip1.Name = "ToolStrip1";
          this.ToolStrip1.Padding = new System.Windows.Forms.Padding(0);
-         this.ToolStrip1.Size = new System.Drawing.Size(48, 189);
+         this.ToolStrip1.Size = new System.Drawing.Size(96, 228);
          this.ToolStrip1.TabIndex = 0;
          this.ToolStrip1.TabStop = true;
          // 
@@ -120,7 +123,7 @@
          this.Record.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.Record.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.Record.Name = "Record";
-         this.Record.Size = new System.Drawing.Size(47, 36);
+         this.Record.Size = new System.Drawing.Size(95, 36);
          this.Record.ButtonClick += new System.EventHandler(this.Record_Click);
          // 
          // CaptureCursor
@@ -129,20 +132,20 @@
          this.CaptureCursor.CheckOnClick = true;
          this.CaptureCursor.CheckState = System.Windows.Forms.CheckState.Checked;
          this.CaptureCursor.Name = "CaptureCursor";
-         this.CaptureCursor.Size = new System.Drawing.Size(181, 22);
+         this.CaptureCursor.Size = new System.Drawing.Size(320, 44);
          this.CaptureCursor.Text = "Capture cursor";
          // 
          // HighlightCursor
          // 
          this.HighlightCursor.CheckOnClick = true;
          this.HighlightCursor.Name = "HighlightCursor";
-         this.HighlightCursor.Size = new System.Drawing.Size(181, 22);
+         this.HighlightCursor.Size = new System.Drawing.Size(320, 44);
          this.HighlightCursor.Text = "Highlight cursor";
          // 
          // ToolStripSeparator2
          // 
          this.ToolStripSeparator2.Name = "ToolStripSeparator2";
-         this.ToolStripSeparator2.Size = new System.Drawing.Size(178, 6);
+         this.ToolStripSeparator2.Size = new System.Drawing.Size(317, 6);
          // 
          // fpsComboBox
          // 
@@ -154,7 +157,7 @@
             "60"});
          this.fpsComboBox.MaxLength = 2;
          this.fpsComboBox.Name = "fpsComboBox";
-         this.fpsComboBox.Size = new System.Drawing.Size(121, 23);
+         this.fpsComboBox.Size = new System.Drawing.Size(121, 40);
          this.fpsComboBox.ToolTipText = "FPS";
          this.fpsComboBox.SelectedIndexChanged += new System.EventHandler(this.fpsComboBox_SelectedIndexChanged);
          // 
@@ -165,7 +168,7 @@
          this.Edit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.Edit.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.Edit.Name = "Edit";
-         this.Edit.Size = new System.Drawing.Size(47, 36);
+         this.Edit.Size = new System.Drawing.Size(95, 36);
          this.Edit.Text = "Edit";
          this.Edit.Click += new System.EventHandler(this.Edit_Click);
          // 
@@ -176,36 +179,37 @@
          this.Save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.Save.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.Save.Name = "Save";
-         this.Save.Size = new System.Drawing.Size(47, 36);
+         this.Save.Size = new System.Drawing.Size(95, 36);
          this.Save.Text = "Save";
          this.Save.Click += new System.EventHandler(this.Save_Click);
          // 
          // ToolStripSeparator1
          // 
          this.ToolStripSeparator1.Name = "ToolStripSeparator1";
-         this.ToolStripSeparator1.Size = new System.Drawing.Size(47, 6);
+         this.ToolStripSeparator1.Size = new System.Drawing.Size(95, 6);
          // 
          // FramesText
          // 
          this.FramesText.Name = "FramesText";
-         this.FramesText.Size = new System.Drawing.Size(47, 15);
+         this.FramesText.Size = new System.Drawing.Size(95, 32);
          this.FramesText.Text = "Frames:";
          // 
          // FrameCount
          // 
          this.FrameCount.Name = "FrameCount";
-         this.FrameCount.Size = new System.Drawing.Size(47, 15);
+         this.FrameCount.Size = new System.Drawing.Size(95, 32);
          this.FrameCount.Text = "0";
          this.FrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
          // 
          // MainWindow
          // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+         this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.BackColor = System.Drawing.Color.Fuchsia;
-         this.ClientSize = new System.Drawing.Size(570, 262);
+         this.ClientSize = new System.Drawing.Size(1140, 504);
          this.Controls.Add(this.ToolStripContainer1);
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
          this.MaximizeBox = false;
          this.Name = "MainWindow";
          this.Text = "ScreenCam";
@@ -213,7 +217,7 @@
          this.TransparencyKey = System.Drawing.Color.Fuchsia;
          this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
          this.Load += new System.EventHandler(this.MainWindow_Load);
-         this.Resize += new System.EventHandler(this.MainWindow_Resize);
+         this.ResizeEnd += new System.EventHandler(this.MainWindow_ResizeEnd);
          this.ToolStripContainer1.ContentPanel.ResumeLayout(false);
          this.ToolStripContainer1.RightToolStripPanel.ResumeLayout(false);
          this.ToolStripContainer1.RightToolStripPanel.PerformLayout();
